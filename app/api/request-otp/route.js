@@ -27,7 +27,7 @@ export async function POST(req) {
         console.log('OTP generated for', email, { code, expires })
 +        if (mailResult && mailResult.preview) console.log('OTP email preview URL:', mailResult.preview)
 
-        return NextResponse.json({ ok: true })
+        return NextResponse.json({ ok: true, code })
     } catch (err) {
         console.error(err)
         return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 })
