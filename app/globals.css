@@ -15,6 +15,20 @@
     button {
         cursor: pointer;
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.15), transparent 25%),
+                    linear-gradient(180deg, #fcfcfd 0%, #f8fafc 100%);
+        color: #0f172a;
+    }
+    a {
+        color: inherit;
+    }
 }
 
 .no-scrollbar::-webkit-scrollbar {

@@ -12,7 +12,8 @@ export default function ContactPage() {
             setStatus('Please complete all fields.')
             return
         }
-        setStatus('Thanks! We have received your message.')</n        setForm({ name: '', email: '', message: '' })
+        setStatus('Thanks! We have received your message.')
+        setForm({ name: '', email: '', message: '' })
     }
 
     return (
