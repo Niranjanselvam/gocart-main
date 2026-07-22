@@ -26,7 +26,7 @@ export async function POST(req) {
             text: `Welcome ${user.name}! Your account is verified.`,
             html: `<p>Welcome <strong>${user.name}</strong>! Your account is verified.</p>`,
         })
-+        if (mailResult && mailResult.preview) console.log('Welcome email preview URL:', mailResult.preview)
+        if (mailResult && mailResult.preview) console.log('Welcome email preview URL:', mailResult.preview)
 
         otpStore.delete(email)
 

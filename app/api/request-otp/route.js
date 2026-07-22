@@ -25,7 +25,7 @@ export async function POST(req) {
 
         // Debug: log generated code and any preview URL (ethereal)
         console.log('OTP generated for', email, { code, expires })
-+        if (mailResult && mailResult.preview) console.log('OTP email preview URL:', mailResult.preview)
+        if (mailResult && mailResult.preview) console.log('OTP email preview URL:', mailResult.preview)
 
         return NextResponse.json({ ok: true, code })
     } catch (err) {
