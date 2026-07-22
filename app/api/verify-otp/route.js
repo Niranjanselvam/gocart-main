@@ -20,12 +20,13 @@ export async function POST(req) {
         const user = { email, name: email.split('@')[0] }
 
         // send welcome email
-        await sendEmail({
+        const mailResult = await sendEmail({
             to: email,
             subject: 'Welcome to HeartyHome',
             text: `Welcome ${user.name}! Your account is verified.`,
             html: `<p>Welcome <strong>${user.name}</strong>! Your account is verified.</p>`,
         })
++        if (mailResult && mailResult.preview) console.log('Welcome email preview URL:', mailResult.preview)
 
         otpStore.delete(email)
 

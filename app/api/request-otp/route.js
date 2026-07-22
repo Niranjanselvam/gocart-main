@@ -16,12 +16,16 @@ export async function POST(req) {
         otpStore.set(email, { code, expires })
 
         // send email (best-effort)
-        await sendEmail({
+        const mailResult = await sendEmail({
             to: email,
             subject: 'Your HeartyHome OTP',
             text: `Your verification code is ${code}`,
             html: `<p>Your verification code is <strong>${code}</strong></p>`,
         })
+
+        // Debug: log generated code and any preview URL (ethereal)
+        console.log('OTP generated for', email, { code, expires })
++        if (mailResult && mailResult.preview) console.log('OTP email preview URL:', mailResult.preview)
 
         return NextResponse.json({ ok: true })
     } catch (err) {
