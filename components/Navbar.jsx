@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/lib/features/auth/authSlice";
+import { clearCart } from "@/lib/features/cart/cartSlice";
 
 const Navbar = () => {
     const router = useRouter();
@@ -21,6 +22,7 @@ const Navbar = () => {
 
     const handleLogout = () => {
         dispatch(logout());
+        dispatch(clearCart());
         router.push('/');
     }
 
