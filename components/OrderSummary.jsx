@@ -1,17 +1,20 @@
 import { PlusIcon, SquarePenIcon, XIcon } from 'lucide-react';
 import React, { useState } from 'react'
 import AddressModal from './AddressModal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { addOrder } from '@/lib/features/order/orderSlice'
 
 const OrderSummary = ({ totalPrice, items }) => {
 
-    const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '$';
+    const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '₹';
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const addressList = useSelector(state => state.address.list);
+    const user = useSelector(state => state.auth.user);
 
     const [paymentMethod, setPaymentMethod] = useState('COD');
     const [selectedAddress, setSelectedAddress] = useState(null);
@@ -27,7 +30,28 @@ const OrderSummary = ({ totalPrice, items }) => {
     const handlePlaceOrder = async (e) => {
         e.preventDefault();
 
-        router.push('/orders')
+        if (!user) {
+            router.push('/login')
+            return
+        }
+
+        try {
+            const res = await fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user, items, total: totalPrice }),
+            })
+            const data = await res.json()
+            if (data?.ok) {
+                dispatch(addOrder(data.order))
+                router.push('/orders')
+            } else {
+                toast.error(data?.error || 'Unable to place order')
+            }
+        } catch (err) {
+            console.error(err)
+            toast.error('Server error')
+        }
     }
 
     return (
