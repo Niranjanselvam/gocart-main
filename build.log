@@ -1,0 +1,61 @@
+
+> heartyhome@0.1.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of c:\Users\USER\Downloads\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * c:\Users\USER\Downloads\gocart-main\gocart-main\package-lock.json
+
+▲ Next.js 16.2.11 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.7s
+  Running TypeScript ...
+  Finished TypeScript in 206ms ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/29) ...
+  Generating static pages using 15 workers (7/29) 
+  Generating static pages using 15 workers (14/29) 
+  Generating static pages using 15 workers (21/29) 
+✓ Generating static pages using 15 workers (29/29) in 792ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ○ /admin
+├ ○ /admin/approve
+├ ○ /admin/coupons
+├ ○ /admin/stores
+├ ƒ /api/dev-emails
+├ ƒ /api/orders
+├ ƒ /api/request-otp
+├ ƒ /api/verify-otp
+├ ○ /best-products
+├ ○ /cart
+├ ○ /contact
+├ ○ /create-store
+├ ○ /dev/messages
+├ ○ /discounts
+├ ○ /loading
+├ ○ /login
+├ ○ /orders
+├ ○ /pricing
+├ ƒ /product/[productId]
+├ ○ /products
+├ ○ /shop
+├ ƒ /shop/[username]
+├ ○ /store
+├ ○ /store/add-product
+├ ○ /store/manage-product
+└ ○ /store/orders
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
