@@ -33,6 +33,7 @@ export async function POST(req) {
         return NextResponse.json({ ok: true, user })
     } catch (err) {
         console.error(err)
-        return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 })
+        const errorMessage = process.env.NODE_ENV === 'production' ? 'Server error' : err.message
+        return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 })
     }
 }
